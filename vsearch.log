@@ -1,0 +1,12 @@
+ImmutableMultiDict([('phrase', 'owens is the neatest boyn in the world'), ('letters', 'aeiou')])
+127.0.0.1
+Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+{'a', 'i', 'o', 'e'}
+ImmutableMultiDict([('phrase', 'galaxy smp'), ('letters', 'aeioupx')])
+127.0.0.1
+Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+{'a', 'x', 'p'}
+ImmutableMultiDict([('phrase', 'truesports'), ('letters', 'aeioupx')])
+127.0.0.1
+Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+{'p', 'u', 'o', 'e'}
