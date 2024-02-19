@@ -1,15 +1,28 @@
 from flask import Flask, render_template,request
+import mysql.connector
 from markupsafe import escape
 from vsearch import search4letters
 app = Flask(__name__)
 
-def log_request(req:'current flask request',res:str)->None:
-    with open('vsearch.log','a') as log:
-        print(req.form,file=log)
-        print(req.remote_addr,file=log)
-        print(req.user_agent,file=log)
-        print(res,file=log)
-
+# def log_request(req:'current flask request',res:str)->None:
+#     with open('vsearch.log','a') as log:
+#         print(req.form,file=log)
+#         print(req.remote_addr,file=log)
+#         print(req.user_agent,file=log)
+#         print(res,file=log)
+def log_requestDB(req,res:str)->None:
+    dbconfig = {
+        'host':'127.0.0.1',
+        'user':'vsearch',
+        'password':'password',
+        'database':'vsearchlogDB'
+    }
+    connection = mysql.connector.connect(**dbconfig)
+    cursor = connection.cursor()
+    _SQL = """ instert into log (phrase,letters,ip,browser_string,results)
+    values (%s,%s,%s,%s,%s)
+    """
+    cursor.execute(_SQL,(req.form['phrase'],req.form['letters'],req.remote_addr,req.user_agent,res))
 
 @app.route('/')
 @app.route('/entry')
